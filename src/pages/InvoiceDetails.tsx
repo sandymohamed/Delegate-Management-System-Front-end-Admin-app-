@@ -25,6 +25,8 @@ import {
   TableBodyCell,
   TableHeadCell,
   TableHeadRow,
+  QuickPaymentForm,
+  PaymentHistory,
 } from "../components";
 import {
   TypeInvoiceDetails,
@@ -44,11 +46,21 @@ const InvoiceDetails: React.FC = () => {
 
   // Dialog
   const [open, setOpen] = useState(false);
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+  };
+  
+  const handlePaymentDialogOpen = () => {
+    setPaymentDialogOpen(true);
+  };
+  
+  const handlePaymentDialogClose = () => {
+    setPaymentDialogOpen(false);
+    handleReloadPage();
   };
 
   const handleReloadPage = () => {
@@ -89,6 +101,14 @@ const InvoiceDetails: React.FC = () => {
                 تسديد مبلغ
               </Button>
               <Button
+                onClick={handlePaymentDialogOpen}
+                variant="contained"
+                color="success"
+                startIcon={<Iconify icon="eva:flash-fill" />}
+              >
+                دفع سريع
+              </Button>
+              <Button
                 onClick={handleClickOpen}
                 variant="outlined"
                 color="secondary"
@@ -124,6 +144,20 @@ const InvoiceDetails: React.FC = () => {
             />
           }
         />
+        
+        <SimpleDialog
+          open={paymentDialogOpen}
+          onClose={handlePaymentDialogClose}
+          title="دفع سريع"
+        >
+          {invoiceDetails && (
+            <QuickPaymentForm
+              invoice={invoiceDetails}
+              onPaymentSuccess={handlePaymentDialogClose}
+            />
+          )}
+        </SimpleDialog>
+        
         <Divider sx={{ my: 3 }} />
 
         <TableContainer component={Paper}>
@@ -212,6 +246,28 @@ const InvoiceDetails: React.FC = () => {
                 </Typography>
               </Stack>
             </Card>
+          </Grid2>
+          
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            {invoiceDetails && !invoiceDetails.is_paid && (
+              <QuickPaymentForm
+                invoice={invoiceDetails}
+                onPaymentSuccess={handleReloadPage}
+                compact
+              />
+            )}
+          </Grid2>
+        </Grid2>
+        
+        {/* Payment History */}
+        <Grid2 container spacing={3} sx={{ mt: 2 }}>
+          <Grid2 size={{ xs: 12 }}>
+            {invoiceDetails && (
+              <PaymentHistory
+                invoiceId={invoiceDetails.id}
+                totalAmount={Number(invoiceDetails.total_after_discount)}
+              />
+            )}
           </Grid2>
         </Grid2>
       </Card>

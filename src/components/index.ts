@@ -7,3 +7,5 @@ export { default as TableHeadRow } from "./table/TableHeadRow";
 export { default as PaymentForm } from "./PaymentForm";
 export { default as SimpleDialog } from "./SimpleDialog";
 export { default as CustomAvatar } from "./CustomAvatar";
+export { default as QuickPaymentForm } from "./QuickPaymentForm";
+export { default as PaymentHistory } from "./PaymentHistory";

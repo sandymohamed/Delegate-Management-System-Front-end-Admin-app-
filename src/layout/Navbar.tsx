@@ -63,6 +63,11 @@ const LINKS: TypeLink[] = [
     path: "/create-payment",
     icon: icons.files,
   },
+  {
+    title: "مركز المدفوعات",
+    path: "/payment-center",
+    icon: icons.price,
+  },
 ];
 
 type TypeNavbarPropd = {

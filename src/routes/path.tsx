@@ -16,6 +16,7 @@ import {
   AddPayment,
   CreateProduct,
   CreateVan,
+  PaymentCenter,
 } from "./elements";
 import MainLayout from "../layout/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
@@ -42,6 +43,7 @@ const Router: React.FC = () => {
         { path: "/customer-invoices/:id", element: <CustomerInvoices /> },
         { path: "/create-customer", element: <CreateCustomer /> },
         { path: "/create-payment/:invoice_id", element: <AddPayment /> },
+        { path: "/payment-center", element: <PaymentCenter /> },
 
         {
           path: "/products",

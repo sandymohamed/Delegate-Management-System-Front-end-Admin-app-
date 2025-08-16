@@ -27,3 +27,4 @@ export const ProductsList = Loadable(lazy(() => import('../pages/ProductsList'))
 export const ReturnedProductsList = Loadable(lazy(() => import('../pages/ReturnedProductsList')));
 export const AddPayment = Loadable(lazy(() => import('../pages/AddPayment')));
 export const CreateProduct = Loadable(lazy(() => import('../pages/CreateProduct')));
+export const PaymentCenter = Loadable(lazy(() => import('../pages/PaymentCenter')));

@@ -138,6 +138,24 @@ const Dashboard: React.FC = () => {
                 </Link>
               </Card>
             </Grid2>
+            
+            <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
+              <Card>
+                <Link component={RouterLink} to="/payment-center" underline="none">
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Iconify icon={icons?.price} width={60} />
+                    <Typography variant="h6">مركز المدفوعات</Typography>
+                  </CardContent>
+                </Link>
+              </Card>
+            </Grid2>
 
             {/* <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
               <Card>
